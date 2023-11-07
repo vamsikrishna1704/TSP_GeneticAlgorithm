@@ -1,9 +1,9 @@
 import random
 import matplotlib.pyplot as plt
 
-# Calculate distance between two points
-def distance(p1, p2):
-    return ((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)**0.5
+# Calculate distance between two cities
+def distance(city1, city2):
+    return ((city1[0] - city2[0])**2 + (city1[1] - city2[1])**2)**0.5
 
 # Calculate the total distance of a path
 def total_distance(path, places):
@@ -107,7 +107,15 @@ best_percent = float(input("Best percent: "))
 
 best_path, best_d, places = main(num, group_size, generations, combine_rate, change_rate, best_percent)
     
-print("Best Path:", best_path)
+print("Best path:",best_path)
 print("Distance:", best_d)
 
-draw(best_path,places)
+plt.figure(figsize=(10,6))
+plt.plot(places)
+plt.xlabel("Generation")
+plt.ylabel("Best Distance")
+plt.title("TSP Genetic Algorithm - Distance Evolution")
+plt.grid(True)
+plt.show()
+
+draw(best_path, places)
